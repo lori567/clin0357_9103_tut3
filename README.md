@@ -1,28 +1,26 @@
 # clin0357_9103_tut3
 
-This is my first push to github.
+## Part 1
+For my project, I find generative art particularly inspiring, especially the intricate geometric designs seen in Islamic tile patterns. These patterns are mesmerizing due to their symmetry, repetition, and mathematical precision. The aspect I'd like to incorporate is the recursive pattern creation, where small shapes repeat to form a larger, cohesive design. This approach would add visual complexity to my project while maintaining order and harmony.
 
-# heading 1
-## heading 2
-### heading 3
-#### heading 4
-##### heading 5
-###### heading 6
+- Example picture 1
+![An image ](readmeImages/picture1.jpg)
 
-**bold**
-*Italics*
+- Example picture 2
+![An image ](readmeImages/picture2.jpeg)
 
-- item 1
-- item 2
-    - subitem 1
-    - subitem 2
+## Part 2
+A useful coding technique to achieve the desired effect is recursive functions. These functions allow shapes to be drawn repeatedly in a pattern by calling themselves within loops, making them ideal for generating geometric designs like tile patterns. Using recursion in combination with JavaScript and canvas manipulation (e.g., p5.js or WebGL) can help achieve the symmetry and precision required for this project. 
 
-1. ordered thing
-2. ordered thing 2
+- Example code
+![An image ](readmeImages/picture3.png)
 
-[Link Text](https://www.google.com)
+- Example picture 3
+![An image ](readmeImages/pattern.png)
 
-![An image of a cat](http://placekitten.com/200/300)
+- Example link
+[Link Text ](https://paralogia.github.io/dessin/)
 
-![An image of the Mona Lisa](readmeImages/Mona_Lisa_by_Leonardo_da_Vinci_500_x_700.jpg)
+- Example picture 4
+![An image ](readmeImages/picture4.png)
 
