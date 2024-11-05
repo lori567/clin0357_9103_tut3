@@ -12,12 +12,38 @@ function setup() {
 
 function draw() {
   drawBlocks(); 
+  moveSmallBlocks();
+}
+
+//Adds a random small block when the mouse is clicked
+function  mousePressed() {
+  //Randomly selects from existing road blocks
+  let roadBlocks = Blocks.filter(block => block.isRoad);
+  if (roadBlocks.length > 0) {
+    let randomRoad = random(roadBlocks);
+    let x = randomRoad.x + Math.floor(random(0, randomRoad.w / smallBlockSize)) * smallBlockSize;
+    let y = randomRoad.y + Math.floor(random(0, randomRoad.h / smallBlockSize)) * smallBlockSize;
+    let colorSmallBlock = random() > 0.5 ? color(160, 55, 45) : color(70, 100, 190);
+
+    //Creates a new small block and adds it to the smallBlocks array
+    smallBlocks.push(new smallBlock(x, y, colorSmallBlock, randomRoad));
+  }
+}
+
+//Increases small block speed with UP arrow, decreases with DOWN arrow
+function keyPressed() {
+  if (keyCode === UP_ARROW) {
+    smallBlockSpeed += 0.5; // Increase small block movement speed
+  } else if (keyCode === DOMN_ARROW && smallBlockSpeed>0) {
+    smallBlockSpeed -= 0.5; // Decrease small block movement speed
+  }
 }
 
 // Allow output images to automatically adjust to changes in window size
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   Blocks = []; // Clear the original Blocks array at each window adjustment 
+  smallBlocks = [];
   initializeBlocks();
   generateRandomSmallBlocks();
   drawBlocks();
