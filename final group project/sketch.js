@@ -1,5 +1,7 @@
 let Blocks = [];
 let smallBlockSize;
+let smallBlockSpeed = 1; // Initial small block movement speed
+let smallBlocks = []; // Used to store moving small blocks
 
 function setup() {
   createCanvas(windowWidth, windowHeight); // Drawing canvas as window size
