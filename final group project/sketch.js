@@ -156,6 +156,46 @@ function drawBlocks() {
   for (let i = 0; i < Blocks.length; i++) {
     Blocks[i].display();
   }
+   // Draw moving small blocks
+  for (let smallBlock of smallBlocks) {
+    smallBlock.display();
+  }
+}
+
+// SmallBlock class to simulate cars moving within roads
+class SmallBlock {
+  constructor(x, y, colorSmallBlock, roadBlock) {
+    this.x = x;
+    this.y = y;
+    this.colorSmallBlock = colorSmallBlock;
+    this.roadBlock = roadBlock; // Saves the road block this small block belongs to
+    this.directionX = random([1, -1]); // Randomly chooses left or right movement direction
+    this.directionY = random([1, -1]); // Randomly chooses up or down movement direction
+  }
+
+  // Small block display
+  display() {
+    fill(this.colorSmallBlock);
+    noStroke();
+    rect(this.x, this.y, smallBlockSize, smallBlockSize);
+  }
+
+  // Small block movement, constrained within the road block
+  move() {
+    // Updates small block position
+    this.x += this.directionX * smallBlockSpeed;
+    this.y += this.directionY * smallBlockSpeed;
+
+    // Checks if it goes beyond the road block boundaries, if so, reverses direction
+    if (this.x < this.roadBlock.x || this.x > this.roadBlock.x + this.roadBlock.w - smallBlockSize) {
+      this.directionX *= -1; // Reverse horizontal movement
+      this.x = constrain(this.x, this.roadBlock.x, this.roadBlock.x + this.roadBlock.w - smallBlockSize); // Constrain within boundary
+    }
+    if (this.y < this.roadBlock.y || this.y > this.roadBlock.y + this.roadBlock.h - smallBlockSize) {
+      this.directionY *= -1; // Reverse vertical movement
+      this.y = constrain(this.y, this.roadBlock.y, this.roadBlock.y + this.roadBlock.h - smallBlockSize); // Constrain within boundary
+    }
+  }
 }
 
 // Generate random blocks on road blocks to simulate cars
