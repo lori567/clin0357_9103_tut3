@@ -26,7 +26,7 @@ function  mousePressed() {
     let colorSmallBlock = random() > 0.5 ? color(160, 55, 45) : color(70, 100, 190);
 
     //Creates a new small block and adds it to the smallBlocks array
-    smallBlocks.push(new smallBlock(x, y, colorSmallBlock, randomRoad));
+    smallBlocks.push(new SmallBlock(x, y, colorSmallBlock, randomRoad));
   }
 }
 
@@ -34,7 +34,7 @@ function  mousePressed() {
 function keyPressed() {
   if (keyCode === UP_ARROW) {
     smallBlockSpeed += 0.5; // Increase small block movement speed
-  } else if (keyCode === DOMN_ARROW && smallBlockSpeed>0) {
+  } else if (keyCode === DOWN_ARROW && smallBlockSpeed>0) {
     smallBlockSpeed -= 0.5; // Decrease small block movement speed
   }
 }
@@ -215,9 +215,16 @@ function generateRandomSmallBlocks() {
         // assign blue or red colour randomly to the smallblocks
         let colorSmallBlock = random() > 0.5 ? color(160, 55, 45) : color(70, 100, 190);
 
-        // Add random small blocks to the Blocks array
-        Blocks.push(new Block(x, y, smallBlockSize, smallBlockSize, colorSmallBlock));
+        // Associate with road block
+        smallBlocks.push(new SmallBlock(x, y, colorSmallBlock,Blocks[i]));
       }
     }
+  }
+}
+
+// Moves all small blocks
+function moveSmallBlocks() {
+  for (let smallBlock of smallBlocks) {
+    smallBlock.move();
   }
 }
